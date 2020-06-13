@@ -1,0 +1,39 @@
+<section class="mt-5 mb-2">
+  <h2 class="h1-responsive text-center text-primary">List of Profiles</h2>
+  <div>
+  </div>
+</section>
+
+<div class="row mt-4">
+  <nav aria-label="Profile navigation">
+    <ul class="pagination pg-blue">
+      <ng-container *ngIf="this.page>1">
+        <li class="page-item">
+          <a class="page-link text-primary" aria-label="Previous" (click)="getProfileListData()"  routerLink="/page/{{this.page - 1}}" mdbWavesEffect>
+            < Previous
+          </a>
+        </li>
+      </ng-container>
+      <li class="page-item">
+        <a class="page-link text-primary" aria-label="Next" (click)="getProfileListData()"  routerLink="/page/{{this.page + 1}}" mdbWavesEffect>
+          Next >
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+
+<div class="row justify-content-center">
+  <ng-container *ngIf="profileList == null">
+    <mdb-icon fas icon="spinner"size="4x" class="mt-5"></mdb-icon>
+  </ng-container>
+  <ng-container *ngIf="profileList != null">
+    <app-profile-items *ngFor="let profile of profileList"  [profile]="profile"></app-profile-items>
+  </ng-container>
+</div>
+
+
+
+
+

@@ -1,0 +1,92 @@
+<ng-template [ngIf]="profile!=null">
+  <div class="col-md mt-4">
+    <mdb-card>
+      <mdb-card-img src="{{profile.picture}}" alt="{{profile.name}}"></mdb-card-img>
+      <mdb-card-body>
+        <mdb-card-title><h4>{{profile.name}}</h4></mdb-card-title>
+        <mdb-card-text>
+          <div class="mb-4 mt-2">
+            <ng-template [ngIf]="profile.isActive">
+              <mdb-badge pill="true"  color="green" >Active</mdb-badge>
+            </ng-template>
+            <ng-template [ngIf]="!profile.isActive">
+              <mdb-badge pill="true"  color="red" >Inactive</mdb-badge>
+            </ng-template>
+            <mdb-badge pill="true" color="blue" class="ml-2 mr-2" *ngIf="profile.gender=='male'">
+            <mdb-icon fas icon="male"></mdb-icon>
+            </mdb-badge>
+
+            <mdb-badge pill="true" color="pink" class="ml-2 mr-2" *ngIf="profile.gender=='female'">
+              <mdb-icon fas icon="female"></mdb-icon>
+            </mdb-badge>
+          </div>
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-md-5 col-5 font-weight-bold">Balance:</div><div class="col-md-6 col-5">{{profile.balance}}</div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-md-5 col-5 font-weight-bold">Age:</div><div class="col-md-6 col-5">{{profile.age}}</div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-md-5 col-5 font-weight-bold">Eye Color:</div><div class="col-md-6 col-4">{{profile.eyeColor}}</div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-md-5 col-5 font-weight-bold">Date Joined:</div><div class="col-md-6 col-4">{{profile.registered | date: 'dd/MM/yyyy'}}</div>
+            </div>
+          </div>
+          <div class="mb-4 mt-4">
+              <a href="mailto:{{profile.email}}" class="ml-2">
+                <mdb-badge pill="true" color="pink">
+                  <mdb-icon fas icon="envelope" size="2x" ></mdb-icon>
+                </mdb-badge>
+              </a>
+            <a href="tel:{{profile.phone}}" class="ml-2">
+              <mdb-badge pill="true" color="purple">
+                <mdb-icon fas icon="phone" size="2x" ></mdb-icon>
+              </mdb-badge>
+            </a>
+          </div>
+        </mdb-card-text>
+
+        <a  type="button" mdbBtn  color="primary"  class="waves-effect mb-4"  (click)="frame.show()"    mdbWavesEffect >VIEW ADDRESS</a>
+
+        <!--Modal-->
+        <div
+          mdbModal
+          #frame="mdbModal"
+          class="modal fade top"
+          id="frameModalTop"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="myModalLabel"
+          aria-hidden="true"
+          style="overflow-y: auto">
+          <div class="modal-dialog modal-notify modal-info" role="document">
+            <div class="modal-content">
+              <div class="modal-header text-center">
+                <h4 class="modal-title white-text w-100 font-weight-bold py-2"> {{profile.name}} Address</h4>
+                <button  type="button"  class="close"  data-dismiss="modal"  aria-label="Close"  (click)="frame.hide()">
+                  <span aria-hidden="true" class="white-text">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <address class="my-2">{{profile.address}}</address>
+                <agm-map style="height: 500px" [latitude]="profile.latitude" [longitude]="profile.longitude">
+                  <agm-marker [latitude]="profile.latitude" [longitude]="profile.longitude">
+                    <agm-info-window #window>
+                      <span>Longitude: {{profile.longitude}}</span><br>
+                      <span>Latitude: {{profile.latitude}}</span>
+                    </agm-info-window>
+
+                  </agm-marker>
+                </agm-map>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--/.Modal-->
+      </mdb-card-body>
+    </mdb-card>
+  </div>
+</ng-template>
+
