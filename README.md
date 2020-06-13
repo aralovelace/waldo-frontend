@@ -25,6 +25,8 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 - For the status, gender -> I used icons to represent the value
 - For the email and phone number -> I used an anchor link, so I don't need to display them.
 - For the address  ->  displayed in the modals, and the longitude & Latitude are displayed as google maps.
+- For the pagination, since I don't have definite number of profiles then I only added 'Previous' and 'Next'
 
 
-##Estimated Time To Complete
+## Estimated Time To Complete
+Overall I spent 4 hours to complete. Spent most time beautifying the site.
