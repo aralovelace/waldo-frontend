@@ -12,11 +12,11 @@
             <ng-template [ngIf]="!profile.isActive">
               <mdb-badge pill="true"  color="red" >Inactive</mdb-badge>
             </ng-template>
-            <mdb-badge pill="true" color="blue" class="ml-2 mr-2" *ngIf="profile.gender=='male'">
+            <mdb-badge pill="true" color="blue" mdbTooltip="Gender: Male" class="ml-2 mr-2" *ngIf="profile.gender=='male'">
             <mdb-icon fas icon="male"></mdb-icon>
             </mdb-badge>
 
-            <mdb-badge pill="true" color="pink" class="ml-2 mr-2" *ngIf="profile.gender=='female'">
+            <mdb-badge pill="true" color="pink" mdbTooltip="Gender: Female" class="ml-2 mr-2" *ngIf="profile.gender=='female'">
               <mdb-icon fas icon="female"></mdb-icon>
             </mdb-badge>
           </div>
@@ -35,12 +35,12 @@
             </div>
           </div>
           <div class="mb-4 mt-4">
-              <a href="mailto:{{profile.email}}" class="ml-2">
+              <a href="mailto:{{profile.email}}" class="ml-2" mdbTooltip="{{profile.email}}">
                 <mdb-badge pill="true" color="pink">
                   <mdb-icon fas icon="envelope" size="2x" ></mdb-icon>
                 </mdb-badge>
               </a>
-            <a href="tel:{{profile.phone}}" class="ml-2">
+            <a href="tel:{{profile.phone}}" class="ml-2" mdbTooltip="{{profile.phone}}">
               <mdb-badge pill="true" color="purple">
                 <mdb-icon fas icon="phone" size="2x" ></mdb-icon>
               </mdb-badge>
