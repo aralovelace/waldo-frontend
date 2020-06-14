@@ -30,7 +30,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 
 ## Estimated Time To Complete
-Overall I spent 4 hours to complete. 
+Overall I spent 5 hours to complete. 
 
 
 ## Screenshots
